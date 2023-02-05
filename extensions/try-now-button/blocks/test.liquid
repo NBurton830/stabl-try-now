@@ -1,0 +1,33 @@
+<div class="{{ settings.button_class }}">
+  <h2>{{ product.title }}</h2>
+  <p>{{ product.description }}</p>
+  <form method="post" action="/cart/add">
+    <input
+      type="hidden"
+      name="id"
+      value="{{ product.variants.first.id }}" />
+    <input
+      type="hidden"
+      name="return_to"
+      value="{{ product.url }}">
+    <input type="submit" value="Try Now">
+  </form>
+</div>
+
+{% schema %}
+  {
+    "name": "Hello World",
+    "target": "section",
+    "stylesheet": "app.css",
+    "javascript": "app.js",
+    "templates": ["product"],
+    "settings": [
+      {
+        "label": "Button Class",
+        "id": "button_class",
+        "type": "text",
+        "default": "try-now-product"
+      }
+    ]
+  }
+{% endschema %}
